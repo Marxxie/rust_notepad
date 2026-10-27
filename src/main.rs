@@ -1,12 +1,37 @@
-use std::{any::type_name, io, ops::Add, str::FromStr};
+use std::{any::type_name, io, ops::Add, result, str::FromStr};
 
-use iced::Element;
+use iced::{Element, widget::text};
 
 #[derive(Debug)]
 enum RetrievalError {
     StdError,
     UnparseableError
 }
+
+
+//-----------iced
+#[derive(Debug)]
+enum Message {
+    Exit
+}
+
+#[derive(Debug, Default)]
+struct AppState {
+
+}
+
+fn view(state: &AppState) -> Element<Message> {
+      text("Welcome!").into()
+}
+
+fn update(state: &mut AppState, message: Message) {
+
+}
+
+//----------
+
+
+
 struct Input;
 
 impl Input {
@@ -51,6 +76,6 @@ impl Input {
 }
 
 
-fn main() {
-    println!("Hello, world!");
+fn main() -> iced::Result {
+    iced::application("Ellie's Notepad", update, view).run()
 }
